@@ -3,8 +3,16 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
-        google()
-        jcenter()
+        mavenLocal()
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven {url 'http://maven.aliyun.com/nexus/content/repositories/google'}
+        maven {
+            credentials {
+                username "mvn_read_ws"
+                password "mrk8929"
+            }
+            url "http://mvn.cloud.alipay.com/nexus/content/repositories/releases/"
+        }
     }
 
     dependencies {
@@ -14,15 +22,23 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
-        google()
-        jcenter()
+        mavenLocal()
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven {url 'http://maven.aliyun.com/nexus/content/repositories/google'}
+        maven {
+            credentials {
+                username "mvn_read_ws"
+                password "mrk8929"
+            }
+            url "http://mvn.cloud.alipay.com/nexus/content/repositories/releases/"
+        }
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
 
     defaultConfig {
         minSdkVersion 16
@@ -34,6 +50,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-core-utils:27.1.1'
+    implementation 'com.android.support:support-core-utils:26.1.1'
 //    api 'androidx.legacy:legacy-support-core-utils:1.0.0'
 }
